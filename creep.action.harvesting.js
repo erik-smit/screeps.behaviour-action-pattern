@@ -5,7 +5,8 @@ action.isValidAction = function(creep){
 };
 action.isValidTarget = function(target){
     return (target != null && target.energy != null && target.energy > 0 && 
-        (target.targetOf === undefined || !_.some(target.targetOf, {'creepType': 'miner'}) ));
+        (target.targetOf === undefined || !_.some(target.targetOf, {'creepType': 'miner'}) 
+        || !_.some(target.targetOf, {'creepType': 'privateer'})));
 };
 action.isAddableTarget = function(target, creep){ 
     return (
@@ -43,7 +44,16 @@ action.newTarget = function(creep){
     return target;
 };
 action.work = function(creep){
-    return creep.harvest(creep.target);
+    var source = creep.target;
+    if(CHATTY) creep.say('harvesting', SAY_PUBLIC);
+    if( source.container && source.container.sum < source.container.storeCapacity ) {
+        let carrying = creep.sum;
+        if( carrying > ( (creep.carryCapacity/2) )){
+            let transfer = r => { if(creep.carry[r] > 0 ) creep.transfer(source.container, r); };
+            _.forEach(Object.keys(creep.carry), transfer);
+        }                           
+    }
+    return creep.harvest(source);
 };
 action.onAssignment = function(creep, target) {
     if( SAY_ASSIGNMENT ) creep.say(String.fromCharCode(9935), SAY_PUBLIC); 

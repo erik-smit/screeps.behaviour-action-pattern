@@ -1,10 +1,10 @@
-var setup = new Creep.Setup('privateer');
+var setup = new Creep.Setup('haulateer');
 setup.minControllerLevel = 3;
 setup.globalMeasurement = true;
 setup.measureByHome = true;
 setup.default = {
-    fixedBody: [WORK, CARRY, MOVE], 
-    multiBody: [WORK, MOVE], 
+    fixedBody: [], 
+    multiBody: [CARRY, CARRY, MOVE], 
     minAbsEnergyAvailable: 400, 
     minEnergyAvailable: 0.8,
     maxMulti: 10,

@@ -29,6 +29,7 @@ var mod = {
         };
         Creep.behaviour = {
             claimer: require('./creep.behaviour.claimer'),
+            haulateer: require('./creep.behaviour.haulateer'),
             hauler: require('./creep.behaviour.hauler'),
             healer: require('./creep.behaviour.healer'),
             melee: require('./creep.behaviour.melee'),
@@ -43,6 +44,7 @@ var mod = {
         };
         Creep.setup = {
             claimer: require('./creep.setup.claimer'),
+            haulateer: require('./creep.setup.haulateer'),
             hauler: require('./creep.setup.hauler'),
             healer: require('./creep.setup.healer'), 
             melee: require('./creep.setup.melee'),
