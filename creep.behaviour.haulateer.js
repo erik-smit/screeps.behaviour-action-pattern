@@ -46,16 +46,16 @@ module.exports = {
                 action.assign(creep))
                 return;
          }
+         if (creep.flag) { creep.flag.cloaking = 60; } 
          if(this.exploitNextRoom(creep)) return;
     },
     exploitNextRoom: function(creep){
         if( creep.sum < creep.carryCapacity/2 ) {
             // calc by distance to home room
             let validColor = flagEntry => (
-                (flagEntry.color == FLAG_COLOR.invade.exploit.color && flagEntry.secondaryColor == FLAG_COLOR.invade.exploit.secondaryColor) ||
-                (flagEntry.color == FLAG_COLOR.invade.robbing.color && flagEntry.secondaryColor == FLAG_COLOR.invade.robbing.secondaryColor)
+                (flagEntry.color == FLAG_COLOR.invade.hauling.color && flagEntry.secondaryColor == FLAG_COLOR.invade.hauling.secondaryColor)
             );
-            let flag = FlagDir.find(validColor, Game.rooms[creep.data.homeRoom].controller.pos, false, FlagDir.exploitMod, creep.name);
+            let flag = FlagDir.find(validColor, Game.rooms[creep.data.homeRoom].controller.pos, false); //, FlagDir.haulMod, creep.name);
             // new flag found
             if( flag ) {
                 // travelling

@@ -1,5 +1,6 @@
 var action = new Creep.Action('harvesting');
 action.renewTarget = false;
+action.maxPerTarget = 1;
 action.isValidAction = function(creep){
     return ( creep.sum < creep.carryCapacity && creep.room.sourceEnergyAvailable > 0 );
 };

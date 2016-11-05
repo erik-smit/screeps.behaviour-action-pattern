@@ -24,6 +24,11 @@ var mod = {
                         secondaryColor: COLOR_YELLOW,
                         filter: {'color': COLOR_RED, 'secondaryColor': COLOR_YELLOW }
                     },
+                    hauling: { // take energy from own structures
+                        color: COLOR_RED,
+                        secondaryColor: COLOR_ORANGE,
+                        filter: {'color': COLOR_RED, 'secondaryColor': COLOR_ORANGE }
+                    },
                 },
                 //COLOR_PURPLE,
                 //COLOR_BLUE,
