@@ -168,8 +168,8 @@ var mod = {
                 else if(creep.ticksToLive == entry.spawningTime) { // will die in ticks equal to spawning time
                     if(CENSUS_ANNOUNCEMENTS) {
                         var message = dye(CRAYON.system, entry.creepName + ' &gt; ') + dye(CRAYON.death, 'Farewell!')
-                        if (creep.stored) {
-                            message += " stats: " + JSON.stringify(creep.stored);
+                        if (creep.data.stored) {
+                            message += " stats: " + JSON.stringify(creep.data.stored);
                         }
                         console.log(message);
                     }

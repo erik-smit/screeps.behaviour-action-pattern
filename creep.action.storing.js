@@ -67,13 +67,13 @@ action.work = function(creep){
             var amount = creep.carry[resourceType];
             workResult = creep.transfer(creep.target, resourceType);
             if( workResult != OK ) break;
-            if (!creep.stored) {
-                creep.stored = new Object();
+            if (!creep.data.stored) {
+                creep.data.stored = new Object();
             }
-            if (!creep.stored[resourceType]) {
-                creep.stored[resourceType] = 0;
+            if (!creep.data.stored[resourceType]) {
+                creep.data.stored[resourceType] = 0;
             }
-            creep.stored[resourceType] += amount;
+            creep.data.stored[resourceType] += amount;
         }
     }
     delete creep.data.actionName;
