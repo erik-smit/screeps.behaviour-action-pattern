@@ -166,7 +166,13 @@ var mod = {
                     spawnsToProbe.push(entry.motherSpawn);
                 }
                 else if(creep.ticksToLive == entry.spawningTime) { // will die in ticks equal to spawning time
-                    if(CENSUS_ANNOUNCEMENTS) console.log(dye(CRAYON.system, entry.creepName + ' &gt; ') + dye(CRAYON.death, 'Farewell!') );
+                    if(CENSUS_ANNOUNCEMENTS) {
+                        var message = dye(CRAYON.system, entry.creepName + ' &gt; ') + dye(CRAYON.death, 'Farewell!')
+                        if (creep.stored) {
+                            message += " stats: " + JSON.stringify(creep.stored);
+                        }
+                        console.log(message);
+                    }
                     if( !spawnsToProbe.includes(entry.motherSpawn) && entry.motherSpawn != 'unknown' ) { 
                         spawnsToProbe.push(entry.motherSpawn);
                     }

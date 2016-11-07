@@ -64,8 +64,16 @@ action.work = function(creep){
     var workResult;
     for(var resourceType in creep.carry) {
         if( creep.carry[resourceType] > 0 ){
+            var amount = creep.carry[resourceType];
             workResult = creep.transfer(creep.target, resourceType);
             if( workResult != OK ) break;
+            if (!creep.stored) {
+                creep.stored = new Object();
+            }
+            if (!creep.stored[resourceType]) {
+                creep.stored[resourceType] = 0;
+            }
+            creep.stored[resourceType] += amount;
         }
     }
     delete creep.data.actionName;
